@@ -1,0 +1,1 @@
+from gos.models.spell import Spell
