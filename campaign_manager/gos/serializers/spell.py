@@ -3,6 +3,7 @@ from rest_framework import serializers
 from gos.models.spell import Spell
 
 class SpellSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Spell
         fields = [

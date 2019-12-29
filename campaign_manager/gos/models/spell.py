@@ -12,7 +12,10 @@ class Spell(models.Model):
     school = models.CharField(max_length=50)
     attack_save = models.CharField(max_length=100)
     damage_effect = models.CharField(max_length=100)
-    higher_levels = models.CharField(max_length=255, blank=True)
+    higher_levels = models.CharField(max_length=255, blank=True, null=True)
     
     class Meta:
         ordering = ['name']
+
+    def __str__(self):
+        return self.name
