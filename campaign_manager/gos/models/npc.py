@@ -18,8 +18,8 @@ class NPC(models.Model):
     bio = models.TextField()
     race = models.CharField(max_length=20)
     alignment = models.CharField(
-        max_length=5,
-        choices=[(alignment, alignment.value) for alignment in AlignmentType]
+        max_length=30,
+        choices=[(alignment.value, alignment.value) for alignment in AlignmentType]
     )
     personality_traits = models.TextField(blank=True, null=True)
     ideals = models.TextField(blank=True, null=True)
@@ -31,4 +31,4 @@ class NPC(models.Model):
     current_hp = models.IntegerField()
 
     def __str__(self):
-        return f'{self.name}: {self.race} {npc_class.name}'
+        return f'{self.name}: {self.race} {self.npc_class.name}'
