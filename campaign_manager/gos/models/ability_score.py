@@ -5,4 +5,11 @@ class AbilityScore(models.Model):
     modifier = models.IntegerField(null=True)
 
     def __str__(self):
-        return f'{self.score} (+{self.modifier})'
+        positive = ''
+        if self.modifier > 0:
+            positive = '+'
+
+        return f'{self.score} ({positive}{self.modifier})'
+
+    class Meta:
+        ordering =['score'] 

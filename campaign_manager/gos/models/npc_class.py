@@ -21,7 +21,7 @@ class NPCClass(models.Model):
     senses = models.CharField(max_length=255, blank=True, null=True)
     languages = models.CharField(max_length=255, blank=True, null=True)
     challenge = models.IntegerField(blank=True, null=True)
-    features = models.ManyToManyField(Feature, blank=True, null=True)
+    features = models.ManyToManyField(Feature, blank=True)
 
     def __str__(self):
         return self.name

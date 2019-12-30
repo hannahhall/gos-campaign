@@ -12,4 +12,4 @@ class SpellSlot(models.Model):
     npc = models.ForeignKey(NPC, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
-        return f'{npc.name} level {level} spell slot'
+        return f'level {self.level} spell slot'

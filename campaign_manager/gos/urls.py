@@ -7,6 +7,7 @@ from gos.views.action import ActionViewSet
 from gos.views.feature import FeatureViewSet
 from gos.views.npc import NPCViewSet
 from gos.views.npc_class import NPCClassViewSet
+from gos.views.blog import BlogViewSet
 
 # Create a router and register our viewsets with it.
 router = DefaultRouter()
@@ -14,9 +15,10 @@ router.register(r'spells', SpellViewSet)
 router.register(r'spell-slots', SpellSlotViewSet)
 router.register(r'ability-score', AbilityScoreViewSet)
 router.register(r'actions', ActionViewSet)
-router.register(r'feature', FeatureViewSet)
-router.register(r'npc-class', NPCClassViewSet)
-router.register(r'npc', NPCViewSet)
+router.register(r'features', FeatureViewSet)
+router.register(r'npc-classes', NPCClassViewSet)
+router.register(r'npcs', NPCViewSet)
+router.register(r'blogs', BlogViewSet)
 
 # The API URLs are now determined automatically by the router.
 urlpatterns = [
