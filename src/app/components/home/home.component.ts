@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BlogStore } from 'src/app/store/blog-store.service';
+import { BlogService } from 'src/app/services/blog.service';
+import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +10,14 @@ import { BlogStore } from 'src/app/store/blog-store.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private blogStore: BlogStore) { }
+  constructor(private blogStore: BlogService,
+    private userService: UserService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
-    console.log('working')
+    // if (!this.userService.token) {
+    //   this.router.navigate(['login'])
+    // }
   }
-
 }

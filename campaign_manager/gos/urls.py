@@ -8,6 +8,7 @@ from gos.views.feature import FeatureViewSet
 from gos.views.npc import NPCViewSet
 from gos.views.npc_class import NPCClassViewSet
 from gos.views.blog import BlogViewSet
+from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
 
 # Create a router and register our viewsets with it.
 router = DefaultRouter()
@@ -23,4 +24,6 @@ router.register(r'blogs', BlogViewSet)
 # The API URLs are now determined automatically by the router.
 urlpatterns = [
     path('', include(router.urls)),
+    path(r'api-token-auth/', obtain_jwt_token),
+    path(r'api-token-refresh/', refresh_jwt_token),
 ]
