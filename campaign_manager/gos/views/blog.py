@@ -1,14 +1,17 @@
-from rest_framework import viewsets
-
 from gos.models.blog import Blog
-from gos.serializers.blog import BlogSerializer
+from gos.serializers.blog import BlogListSerializer, BlogDetailSerializer
+from gos.utils import MultiSerializerViewSet
 
 
-class BlogViewSet(viewsets.ModelViewSet):
+class BlogViewSet(MultiSerializerViewSet):
     """
     This viewset automatically provides `list`, `create`, `retrieve`,
     `update` and `destroy` actions.
 
     """
     queryset = Blog.objects.all()
-    serializer_class = BlogSerializer
+    serializers = {
+        'list': BlogListSerializer,
+        'default': BlogDetailSerializer
+        # etc.
+    }

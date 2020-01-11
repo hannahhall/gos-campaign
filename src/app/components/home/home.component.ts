@@ -19,5 +19,6 @@ export class HomeComponent implements OnInit {
     // if (!this.userService.token) {
     //   this.router.navigate(['login'])
     // }
+    this.router.navigate(['blogs/1'])
   }
 }

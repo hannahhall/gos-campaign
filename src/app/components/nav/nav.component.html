@@ -1,1 +1,16 @@
-<p>nav works!</p>
+<aside class="menu">
+    <figure class="image is-128x128">
+        <img src="/assets/octo-logo.png">
+    </figure>
+    <p class="menu-label">
+        Encyclopedia
+    </p>
+    <ul class="menu-list">
+        <li *ngFor="let item of blogs | keyvalue" class="menu-container">
+            <a (click)="toggleSection(item.key)" class="menu-item">{{ item.key }}s</a>
+            <ul *ngIf="isShown(item.key)" class="menu-inner">
+                <li *ngFor="let blog of item.value"><a class="menu-item" (click)="goToBlog(blog.id)">{{ blog.title }}</a></li>
+            </ul>
+        </li>
+    </ul>
+</aside>

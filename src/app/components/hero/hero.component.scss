@@ -1,0 +1,23 @@
+@import '../../../sass/vars';
+@import '../../../sass/colors';
+
+.hero {
+    position: fixed;
+    left: $menu-width;
+    right: 0;
+    z-index: 999;
+
+    .title {
+        font-family: $family-secondary;
+        color: $dark-green;
+        font-size: 40px;
+    }
+
+    &-body {
+        padding: .5rem;
+    }
+
+    &.is-bold {
+        background-image: linear-gradient(90deg, lighten($primary, 5%) 0%, $primary 71%, darken($primary, 20%) 100%);
+    }
+}

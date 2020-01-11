@@ -4,4 +4,4 @@ from rest_framework import serializers
 class AbilityScoreSerializer(serializers.ModelSerializer):
     class Meta:
         model = AbilityScore
-        fields = ['score', 'modifier']
+        fields = '__all__'
