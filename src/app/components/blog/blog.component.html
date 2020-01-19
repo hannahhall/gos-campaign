@@ -1,5 +1,7 @@
 <app-hero [title]="blog.title"></app-hero>
 <article class="blog content">
-    <img src="assets/Saltmarsh-image.png" alt="" class="image is-2by3">
+    <div>
+        <img src="{{blog.image}}" alt="" class="image is-{{blog.type | lowercase}}">
+    </div>
     <section [innerHtml]="blog.description"></section>
 </article>

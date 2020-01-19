@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from 'src/app/services/blog.service';
 import { trigger, transition, animate, style } from '@angular/animations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -12,7 +13,7 @@ export class NavComponent implements OnInit {
   hideBlogs: boolean = true;
   showType: any = {}
 
-  constructor(private blogService: BlogService) { }
+  constructor(private blogService: BlogService, private router: Router) { }
 
   ngOnInit() {
     this.blogService.blogs.subscribe(res => {
@@ -37,5 +38,6 @@ export class NavComponent implements OnInit {
 
   goToBlog(id: number) {
     this.blogService.setBlog(id);
+    this.router.navigate([`blogs/${id}`])
   }
 }
