@@ -16,5 +16,7 @@ class MultiSerializerViewSet(viewsets.ModelViewSet):
         'default': None,
     }
     def get_serializer_class(self):
-            return self.serializers.get(self.action,
-                        self.serializers['default'])
+        return self.serializers.get(
+            self.action,
+            self.serializers['default']
+        )

@@ -1,12 +1,10 @@
 @import '../../../sass/colors';
 :host {
     width: 100%;
-    margin-left: 300px;
-    height: 100%;
+    min-height: 100%;
     
     .blog {
         padding: 70px 10px 10px;
-        background: url('/assets/ricepaper_v3_@2X.png') top left repeat;
         color: $secondary;
         min-height: 100%;
 

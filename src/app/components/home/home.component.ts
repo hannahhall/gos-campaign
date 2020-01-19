@@ -17,8 +17,12 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.blogService.blog.subscribe((res: Blog) => {
-      this.router.navigate([`blogs/${res.id}`])
-    })
+    if (this.userService.token) {
+      this.blogService.blog.subscribe((res: Blog) => {
+        this.router.navigate([`blogs/${res.id}`])
+      })
+    } else {
+      this.router.navigate(['login'])
+    }
   }
 }

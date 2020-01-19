@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib.auth.models import Permission
 from gos.models.npc_class import NPCClass
 from gos.models.spell import Spell
 from gos.models.spell_slot import SpellSlot
@@ -17,3 +18,4 @@ admin.site.register(Feature)
 admin.site.register(NPCClass)
 admin.site.register(NPC)
 admin.site.register(Blog)
+admin.site.register(Permission)

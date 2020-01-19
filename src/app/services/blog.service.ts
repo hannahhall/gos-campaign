@@ -27,7 +27,6 @@ export class BlogService {
   }
 
   getOverviewBlog(blogs: Blog[]) {
-    console.log(blogs)
     const blog = blogs.find(blog => blog.type === 'overview');
     this.setBlog(blog.id);
   }
