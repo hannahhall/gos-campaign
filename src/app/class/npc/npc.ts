@@ -1,4 +1,4 @@
-import { NpcClass } from './npc-class';
+import { NpcClass } from '../npc-class/npc-class';
 
 export class Npc {
     id: number;

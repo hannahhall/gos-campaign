@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
-import { Spell } from '../../class/spell';
+import { Spell } from '../../class/spell/spell';
 
 @Injectable({
   providedIn: 'root'

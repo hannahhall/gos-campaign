@@ -1,5 +1,5 @@
-import { AbilityScore } from './ability-score';
-import { Feature } from './feature';
+import { AbilityScore } from '../ability-score/ability-score';
+import { Feature } from '../feature/feature';
 
 export class NpcClass {
     id: number;

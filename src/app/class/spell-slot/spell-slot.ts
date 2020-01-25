@@ -1,4 +1,4 @@
-import { Spell } from './spell';
+import { Spell } from '../spell/spell';
 
 export class SpellSlot {
     id:number;
