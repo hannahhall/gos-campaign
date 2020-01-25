@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { BlogService } from 'src/app/services/blog.service';
+import { BlogService } from 'src/app/services/blog/blog.service';
 import { Blog } from 'src/app/class/blog';
 
 @Component({

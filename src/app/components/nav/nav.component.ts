@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BlogService } from 'src/app/services/blog.service';
+import { BlogService } from 'src/app/services/blog/blog.service';
 import { Router } from '@angular/router';
-import { UserService } from 'src/app/services/user.service';
+import { UserService } from 'src/app/services/user/user.service';
 import { User } from 'src/app/class/user';
 import { SpellService } from 'src/app/services/spell/spell.service';
 import { Spell } from 'src/app/class/spell';
