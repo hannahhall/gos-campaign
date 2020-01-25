@@ -1,14 +1,18 @@
+from gos.utils import MultiSerializerViewSet
 from rest_framework import viewsets
 
 from gos.models.npc import NPC
-from gos.serializers.npc import NPCSerializer
+from gos.serializers.npc import NpcListSerializer, NpcDetailSerializer
 
 
-class NPCViewSet(viewsets.ModelViewSet):
+class NPCViewSet(MultiSerializerViewSet):
     """
     This viewset automatically provides `list`, `create`, `retrieve`,
     `update` and `destroy` actions.
 
     """
     queryset = NPC.objects.all()
-    serializer_class = NPCSerializer
+    serializers = {
+        'list': NpcListSerializer,
+        'default': NpcDetailSerializer
+    }

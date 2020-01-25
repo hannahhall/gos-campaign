@@ -18,11 +18,21 @@
             Dungeon Master
         </p>
         <!-- Spells -->
-        <ul class="menu-list" *ngIf="user">
+        <ul class="menu-list">
             <li class="menu-container">
                 <a (click)="toggleSection('spells')" class="menu-item">Spells</a>
                 <ul *ngIf="isShown('spells')" class="menu-inner">
                     <li *ngFor="let spell of spells"><a class="menu-item" (click)="goToSpell(spell.id)">{{ spell.name }}</a></li>
+                </ul>
+            </li>
+        </ul>
+
+        <!-- Npcs -->
+        <ul class="menu-list">
+            <li class="menu-container">
+                <a (click)="toggleSection('npcs')" class="menu-item">Npcs</a>
+                <ul *ngIf="isShown('npcs')" class="menu-inner">
+                    <li *ngFor="let npc of npcs"><a class="menu-item" (click)="goToNpc(npc.id)">{{ npc.name }}</a></li>
                 </ul>
             </li>
         </ul>

@@ -9,7 +9,7 @@ class SpellSlot(models.Model):
     max = models.IntegerField()
     used = models.IntegerField()
     spells = models.ManyToManyField(Spell)
-    npc = models.ForeignKey(NPC, on_delete=models.CASCADE, null=True)
+    npc = models.ForeignKey(NPC, related_name='spell_slots', on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return f'level {self.level} spell slot'

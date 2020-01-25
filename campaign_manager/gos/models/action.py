@@ -8,7 +8,7 @@ class Action(models.Model):
     attack_bonus = models.IntegerField(default=0, blank=True, null=True)
     hit = models.CharField(max_length=20, blank=True, null=True)
     damage_type = models.CharField(max_length=50, blank=True, null=True)
-    npc_class = models.ForeignKey(NPCClass, on_delete=models.SET_NULL, null=True, blank=True)
+    npc_class = models.ForeignKey(NPCClass, related_name='actions', on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return self.name

@@ -5,6 +5,8 @@ import { UserService } from 'src/app/services/user/user.service';
 import { User } from 'src/app/class/user/user';
 import { SpellService } from 'src/app/services/spell/spell.service';
 import { Spell } from 'src/app/class/spell/spell';
+import { Npc } from 'src/app/class/npc/npc';
+import { NpcService } from 'src/app/services/npc/npc.service';
 
 @Component({
   selector: 'app-nav',
@@ -16,13 +18,15 @@ export class NavComponent implements OnInit {
   hideBlogs: boolean = true;
   showType: any = {};
   user: User;
-  spells: Spell[]
+  spells: Spell[];
+  npcs: Npc[];
 
   constructor(
     private blogService: BlogService,
     private router: Router,
     private userService: UserService,
     private spellService: SpellService,
+    private npcService: NpcService,
   ) { }
 
   ngOnInit() {
@@ -44,7 +48,12 @@ export class NavComponent implements OnInit {
     this.spellService.spells.subscribe(res => {
       this.spells = res;
       this.showType.spells = false;
-    })
+    });
+
+    this.npcService.npcs.subscribe(res => {
+      this.npcs = res;
+      this.showType.npcs = false;
+    });
   }
 
   toggleSection(type) {
@@ -63,5 +72,10 @@ export class NavComponent implements OnInit {
   goToSpell(id: number) {
     this.spellService.setSpell(id);
     this.router.navigate(['spells', id]);
+  }
+
+  goToNpc(id:number) {
+    this.npcService.setNpc(id);
+    this.router.navigate(['npc', id])
   }
 }

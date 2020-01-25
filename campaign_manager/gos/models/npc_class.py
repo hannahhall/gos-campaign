@@ -4,7 +4,7 @@ from gos.models.feature import Feature
 
 class NPCClass(models.Model):
     name = models.CharField(max_length=100)
-    description = models.CharField(max_length=255)
+    description = models.TextField()
     armor_class = models.IntegerField()
     max_hit_points = models.IntegerField()
     speed = models.CharField(max_length=30)
@@ -14,6 +14,7 @@ class NPCClass(models.Model):
     int = models.ForeignKey(AbilityScore, related_name='int', on_delete=models.PROTECT)
     wis = models.ForeignKey(AbilityScore, related_name='wis', on_delete=models.PROTECT)
     cha = models.ForeignKey(AbilityScore, related_name='cha', on_delete=models.PROTECT)
+    skills = models.CharField(max_length=255, blank=True, null=True)
     saving_throws = models.CharField(max_length=255, blank=True, null=True)
     damage_resistance = models.CharField(max_length=255, blank=True, null=True)
     damage_immunities = models.CharField(max_length=255, blank=True, null=True)
@@ -22,6 +23,8 @@ class NPCClass(models.Model):
     languages = models.CharField(max_length=255, blank=True, null=True)
     challenge = models.IntegerField(blank=True, null=True)
     features = models.ManyToManyField(Feature, blank=True)
+    reactions = models.TextField(blank=True, null=True)
+    legendary_actions = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return self.name
