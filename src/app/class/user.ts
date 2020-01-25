@@ -1,9 +1,9 @@
 export class User {
     username: string;
-    isSuperUser: boolean;
+    isSuperuser: boolean;
 
     constructor(props: any) {
         this.username = props.username;
-        this.isSuperUser = props.isSuperUser;
+        this.isSuperuser = props.is_superuser;
     }
 }

@@ -11,6 +11,8 @@ import { LoginComponent } from './components/login/login.component';
 import { NavComponent } from './components/nav/nav.component';
 import { HeroComponent } from './components/hero/hero.component';
 import { BlogComponent } from './components/blog/blog.component';
+import { SpellComponent } from './components/spell/spell.component';
+import { NpcComponent } from './components/npc/npc.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { BlogComponent } from './components/blog/blog.component';
     NavComponent,
     HeroComponent,
     BlogComponent,
+    SpellComponent,
+    NpcComponent,
   ],
   imports: [
     BrowserModule,

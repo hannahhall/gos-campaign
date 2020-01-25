@@ -5,7 +5,7 @@
     <p class="menu-label">
         Encyclopedia
     </p>
-    <ul class="menu-list">
+    <ul class="menu-list" *ngIf="user">
         <li *ngFor="let item of blogs | keyvalue" class="menu-container">
             <a (click)="toggleSection(item.key)" class="menu-item">{{ item.key }}s</a>
             <ul *ngIf="isShown(item.key)" class="menu-inner">
@@ -13,4 +13,18 @@
             </ul>
         </li>
     </ul>
+    <ng-container *ngIf="user.isSuperuser">
+        <p class="menu-label">
+            Dungeon Master
+        </p>
+        <!-- Spells -->
+        <ul class="menu-list" *ngIf="user">
+            <li class="menu-container">
+                <a (click)="toggleSection('spells')" class="menu-item">Spells</a>
+                <ul *ngIf="isShown('spells')" class="menu-inner">
+                    <li *ngFor="let spell of spells"><a class="menu-item" (click)="goToSpell(spell.id)">{{ spell.name }}</a></li>
+                </ul>
+            </li>
+        </ul>
+    </ng-container>
 </aside>

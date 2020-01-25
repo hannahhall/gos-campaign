@@ -13,5 +13,4 @@ class BlogViewSet(MultiSerializerViewSet):
     serializers = {
         'list': BlogListSerializer,
         'default': BlogDetailSerializer
-        # etc.
     }

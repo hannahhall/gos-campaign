@@ -17,12 +17,12 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if (this.userService.token) {
+    if (this.userService.token && !this.userService.errors.length) {
       this.blogService.blog.subscribe((res: Blog) => {
-        this.router.navigate([`blogs/${res.id}`])
-      })
+        this.router.navigate(['blogs', 3]);
+      });
     } else {
-      this.router.navigate(['login'])
+      this.router.navigate(['login']);
     }
   }
 }

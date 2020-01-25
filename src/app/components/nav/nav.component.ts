@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from 'src/app/services/blog.service';
-import { trigger, transition, animate, style } from '@angular/animations';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/class/user';
+import { SpellService } from 'src/app/services/spell/spell.service';
+import { Spell } from 'src/app/class/spell';
 
 @Component({
   selector: 'app-nav',
@@ -11,11 +14,22 @@ import { Router } from '@angular/router';
 export class NavComponent implements OnInit {
   blogs: any = {};
   hideBlogs: boolean = true;
-  showType: any = {}
+  showType: any = {};
+  user: User;
+  spells: Spell[]
 
-  constructor(private blogService: BlogService, private router: Router) { }
+  constructor(
+    private blogService: BlogService,
+    private router: Router,
+    private userService: UserService,
+    private spellService: SpellService,
+  ) { }
 
   ngOnInit() {
+    this.userService.currentUser.subscribe(res => {
+      this.user = res;
+    });
+
     this.blogService.blogs.subscribe(res => {
       res.forEach(blog => {
         const type = blog.type;
@@ -26,6 +40,11 @@ export class NavComponent implements OnInit {
         this.showType[type] = false;
       });
     });
+
+    this.spellService.spells.subscribe(res => {
+      this.spells = res;
+      this.showType.spells = false;
+    })
   }
 
   toggleSection(type) {
@@ -38,6 +57,11 @@ export class NavComponent implements OnInit {
 
   goToBlog(id: number) {
     this.blogService.setBlog(id);
-    this.router.navigate([`blogs/${id}`])
+    this.router.navigate(['blogs', id])
+  }
+
+  goToSpell(id: number) {
+    this.spellService.setSpell(id);
+    this.router.navigate(['spells', id]);
   }
 }

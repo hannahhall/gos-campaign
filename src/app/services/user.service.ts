@@ -1,21 +1,34 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { User } from '../class/user';
+import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
  
 @Injectable()
 export class UserService {
   private httpOptions: any;
-  public token: string;
+  private _token: string;
   public token_expires: Date;
   public username: string;
   public errors: any = [];
-  public currentUser: User;
+  private _user: BehaviorSubject<User> = new BehaviorSubject(new User({}));
+
+  get token() {
+    return localStorage.getItem('token');
+  }
+
+  set token(value) {
+    localStorage.setItem('token', value);
+  }
+
+  get currentUser() {
+    return this._user.asObservable();
+  }
  
   constructor(private http: HttpClient) {
     this.httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     };
-    this.token = localStorage.getItem('token');
     if (this.token) {
       this.refreshToken();
     }
@@ -26,9 +39,10 @@ export class UserService {
       data => {
         this.updateData(data['token']);
         this.updateUser(data['user']);
+        this.errors = [];
       },
       err => {
-        this.errors = err['error'];
+        this.errors.push(err)
       }
     );
   }
@@ -38,10 +52,11 @@ export class UserService {
       data => {
         this.updateData(data['token']);
         this.updateUser(data['user']);
+        this.errors = [];
       },
       err => {
-        console.log(err)
-        this.errors = err['error'];
+        this.errors.push(err);
+        this.logout();
       }
     );
   }
@@ -53,13 +68,12 @@ export class UserService {
   }
  
   private updateData(token: string) {
-    localStorage.setItem('token', token)
     this.token = token;
     this.errors = []; 
   }
 
   private updateUser(user: any) {
-    this.currentUser = new User(user);
+    this._user.next(new User(user));
   }
  
 }

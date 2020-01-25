@@ -1,17 +1,17 @@
 export class Spell {
     id: number;
-    created: string;
+    created?: string;
     name: string;
-    description: string;
-    level: string;
-    castingTime: string;
-    range: string;
-    components: string;
-    duration: string;
-    school: string;
-    attackSave: string;
-    damageEffect: string;
-    higherLevels: string;
+    description?: string;
+    level?: string;
+    castingTime?: string;
+    range?: string;
+    components?: string;
+    duration?: string;
+    school?: string;
+    attackSave?: string;
+    damageEffect?: string;
+    higherLevels?: string;
 
     constructor(props: any) {
         this.id = props.id;
