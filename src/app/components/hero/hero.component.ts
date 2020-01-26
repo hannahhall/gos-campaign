@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { MenuService } from 'src/app/services/menu/menu.service';
 
 @Component({
   selector: 'app-hero',
@@ -9,9 +10,13 @@ export class HeroComponent implements OnInit {
   @Input() title: string;
   @Input() subtitle?: string;
 
-  constructor() { }
+  constructor(private menuService: MenuService) { }
 
   ngOnInit() {
+  }
+
+  openMenu() {
+    this.menuService.setOpenMenu(true);
   }
 
 }

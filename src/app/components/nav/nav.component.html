@@ -1,4 +1,7 @@
-<aside class="menu">
+<aside class="menu" [ngClass]="{'-open': isOpen}">
+    <div class="close-menu">
+        <i (click)="closeMenu()" class="fas fa-dungeon"></i>
+      </div>
     <figure class="image is-128x128">
         <img src="/assets/octo-logo.png">
     </figure>

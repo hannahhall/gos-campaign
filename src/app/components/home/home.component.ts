@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if (!this.userService.token && this.userService.errors.length) {
+    if (!this.userService.token || this.userService.errors.length) {
       this.router.navigate(['login']);
     }
   }

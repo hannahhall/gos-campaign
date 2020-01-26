@@ -62,7 +62,7 @@ export class UserService {
   }
  
   public logout() {
-    this.token = null;
+    localStorage.removeItem('token')
     this.token_expires = null;
     this.username = null;
   }

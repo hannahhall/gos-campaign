@@ -7,6 +7,7 @@ import { SpellService } from 'src/app/services/spell/spell.service';
 import { Spell } from 'src/app/class/spell/spell';
 import { Npc } from 'src/app/class/npc/npc';
 import { NpcService } from 'src/app/services/npc/npc.service';
+import { MenuService } from 'src/app/services/menu/menu.service';
 
 @Component({
   selector: 'app-nav',
@@ -20,6 +21,7 @@ export class NavComponent implements OnInit {
   user: User;
   spells: Spell[];
   npcs: Npc[];
+  isOpen: Boolean = false;
 
   constructor(
     private blogService: BlogService,
@@ -27,12 +29,17 @@ export class NavComponent implements OnInit {
     private userService: UserService,
     private spellService: SpellService,
     private npcService: NpcService,
+    private menuService: MenuService,
   ) { }
 
   ngOnInit() {
     this.userService.currentUser.subscribe(res => {
       this.user = res;
     });
+
+    this.menuService.openMenu.subscribe(isOpen => {
+      this.isOpen = isOpen;
+    })
 
     this.blogService.blogs.subscribe(res => {
       res.forEach(blog => {
@@ -66,16 +73,24 @@ export class NavComponent implements OnInit {
 
   goToBlog(id: number) {
     this.blogService.setBlog(id);
-    this.router.navigate(['blogs', id])
+    this.router.navigate(['blogs', id]);
+    this.closeMenu();
   }
 
   goToSpell(id: number) {
     this.spellService.setSpell(id);
     this.router.navigate(['spells', id]);
+    this.closeMenu();
   }
 
   goToNpc(id:number) {
     this.npcService.setNpc(id);
-    this.router.navigate(['npc', id])
+    this.router.navigate(['npc', id]);
+    this.closeMenu();
+
+  }
+
+  closeMenu() {
+    this.menuService.setOpenMenu(false);
   }
 }
