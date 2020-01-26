@@ -1,0 +1,75 @@
+<section class="block">
+    <div class="block-overview">
+        <h2 class="block-heading">{{klass.name}}</h2>
+        <p class="block-description">{{klass.shortDescription}}</p>
+    </div>
+    <div class="block-stats">
+        <li><strong>Armor Class</strong> {{klass.armorClass}}</li>
+        <li><strong>Max Hit Points</strong> {{klass.maxHitPoints}}</li>
+        <li><strong>Speed</strong> {{klass.speed}}</li>
+        <li><strong>Challenge</strong> {{klass.challenge}}</li>
+    </div>
+    <div class="block-scores">
+        <div class="block-score">
+            <span class="block-score-title">Str</span>
+            <span>{{klass.str}}</span>
+        </div>
+        <div class="block-score">
+            <span class="block-score-title">Dex</span>
+            <span>{{klass.dex}}</span>
+        </div>
+        <div class="block-score">
+            <span class="block-score-title">Con</span>
+            <span>{{klass.con}}</span>
+        </div>
+        <div class="block-score">
+            <span class="block-score-title">Int</span>
+            <span>{{klass.int}}</span>
+        </div>
+        <div class="block-score">
+            <span class="block-score-title">Wis</span>
+            <span>{{klass.wis}}</span>
+        </div>
+        <div class="block-score">
+            <span class="block-score-title">Cha</span>
+            <span>{{klass.cha}}</span>
+        </div>
+    </div>
+    <div class="block-abilities">
+        <div class="block-ability" *ngIf="klass.savingThrows">
+            <span class="block-ability-title">Saving Throws</span>
+            <span>{{klass.savingThrows}}</span>
+        </div>
+        <div class="block-ability" *ngIf="klass.skills">
+            <span class="block-ability-title">Skills</span>
+            <span>{{klass.skills}}</span>
+        </div>
+        <div class="block-ability" *ngIf="klass.senses">
+            <span class="block-ability-title">Senses</span>
+            <span>{{klass.senses}}</span>
+        </div>
+        <div class="block-ability" *ngIf="klass.languages">
+            <span class="block-ability-title">Languages</span>
+            <span>{{klass.languages}}</span>
+        </div>
+    </div>
+    <div class="block-actions" *ngIf="klass.actions">
+        <h3>Actions</h3>
+        <div class="block-action" *ngFor="let action of klass.actions">
+            <span class="block-action-name">{{action.name}}</span>
+            <span class="block-action-type">{{action.attack_type}}</span>: 
+            <span class="block-action-description">{{action.description}}</span>
+        </div>
+    </div>
+    <div class="block-reactions" *ngIf="klass.reactions">
+        <h3>Reactions</h3>
+        <div class="block-reaction" *ngFor="let reaction of klass.reactions">
+            <span class="block-reaction-name">{{reaction.name}}</span>
+            <span class="block-reaction-description">{{reaction.description}}</span>
+        </div>
+    </div>
+    <div class="block-description" *ngIf="klass.description">
+        <h3>Description</h3>
+        <p>{{klass.description}}</p>
+    </div>
+</section>

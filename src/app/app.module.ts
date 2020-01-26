@@ -13,6 +13,7 @@ import { HeroComponent } from './components/hero/hero.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { SpellComponent } from './components/spell/spell.component';
 import { NpcComponent } from './components/npc/npc.component';
+import { ClassBlockComponent } from './components/class-block/class-block.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { NpcComponent } from './components/npc/npc.component';
     BlogComponent,
     SpellComponent,
     NpcComponent,
+    ClassBlockComponent,
   ],
   imports: [
     BrowserModule,

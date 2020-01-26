@@ -14,8 +14,10 @@ export class Npc {
     secrets: string;
     npcClass: NpcClass;
     currentHp: number;
+    reactions: any;
 
     constructor(props: any) {
+        if (!props) return;
         this.id = props.id;
         this.name = props.name;
         this.bio = props.bio;
@@ -27,7 +29,7 @@ export class Npc {
         this.flaws = props.flaws;
         this.notes = props.notes;
         this.secrets = props.secrets;
-        this.npcClass = props.npcClass;
+        this.npcClass = new NpcClass(props.npc_class);
         this.currentHp = props.currentHp;
     }
 }

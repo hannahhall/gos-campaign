@@ -22,6 +22,11 @@ const routes: Routes = [
   {
     path: 'npc/:id',
     component: NpcComponent
+  },
+  {
+    path: '',
+    redirectTo: 'blogs/3',
+    pathMatch: 'full'
   }
 ];
 

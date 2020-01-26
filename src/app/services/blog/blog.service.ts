@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { Blog } from '../../class/blog/blog';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class BlogService {
   private _blogs: BehaviorSubject<Blog[]> = new BehaviorSubject([]);
   private _blog: BehaviorSubject<Blog> = new BehaviorSubject(new Blog({}))
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.loadInitialData();
   }
 
@@ -26,11 +27,6 @@ export class BlogService {
     return this.http.get(`api/blogs/`);
   }
 
-  getOverviewBlog(blogs: Blog[]) {
-    const blog = blogs.find(blog => blog.type === 'overview');
-    this.setBlog(blog.id);
-  }
-
   loadInitialData() {
     this.getAllBlogs().subscribe(
       (res: any) => {
@@ -43,7 +39,11 @@ export class BlogService {
             type: blog.type
           })
         );
-        this.getOverviewBlog(blogs);
+        if (this.router.url.includes('blogs')) {
+          const id = this.router.url.split('/').pop()
+          console.log(id)
+          this.setBlog(parseInt(id));
+        }
         this._blogs.next(blogs);
       },
       err => console.log('Error getting blogs', err)

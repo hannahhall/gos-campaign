@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BlogService } from 'src/app/services/blog/blog.service';
 import { UserService } from 'src/app/services/user/user.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Blog } from 'src/app/class/blog/blog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -11,17 +9,13 @@ import { Blog } from 'src/app/class/blog/blog';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private blogService: BlogService,
+  constructor(
     private userService: UserService,
     private router: Router,
   ) { }
 
   ngOnInit() {
-    if (this.userService.token && !this.userService.errors.length) {
-      this.blogService.blog.subscribe((res: Blog) => {
-        this.router.navigate(['blogs', 3]);
-      });
-    } else {
+    if (!this.userService.token && this.userService.errors.length) {
       this.router.navigate(['login']);
     }
   }

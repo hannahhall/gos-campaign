@@ -4,6 +4,7 @@ from gos.models.feature import Feature
 
 class NPCClass(models.Model):
     name = models.CharField(max_length=100)
+    short_description = models.CharField(max_length=255)
     description = models.TextField()
     armor_class = models.IntegerField()
     max_hit_points = models.IntegerField()
@@ -23,7 +24,6 @@ class NPCClass(models.Model):
     languages = models.CharField(max_length=255, blank=True, null=True)
     challenge = models.IntegerField(blank=True, null=True)
     features = models.ManyToManyField(Feature, blank=True)
-    reactions = models.TextField(blank=True, null=True)
     legendary_actions = models.TextField(blank=True, null=True)
 
     def __str__(self):
