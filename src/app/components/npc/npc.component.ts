@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NpcService } from 'src/app/services/npc/npc.service';
-import { timingSafeEqual } from 'crypto';
 import { Npc } from 'src/app/class/npc/npc';
 
 @Component({
@@ -10,6 +9,8 @@ import { Npc } from 'src/app/class/npc/npc';
 })
 export class NpcComponent implements OnInit {
   npc: Npc;
+  viewClass: boolean = true;
+  viewCharacter: boolean = false;
 
   constructor(
     private npcService: NpcService
@@ -18,7 +19,17 @@ export class NpcComponent implements OnInit {
   ngOnInit() {
     this.npcService.npc.subscribe((npc: Npc) => {
       this.npc = npc
-    })
+    });
+  }
+
+  toggleClass() {
+    this.viewClass = true;
+    this.viewCharacter = false;
+  }
+
+  toggleCharacter() {
+    this.viewClass = false;
+    this.viewCharacter = true;
   }
 
 }

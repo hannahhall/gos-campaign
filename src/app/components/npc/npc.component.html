@@ -1,5 +1,10 @@
 <app-hero [title]="npc.name"></app-hero>
 <section class="npc">
-    <app-class-block [klass]="npc.npcClass"></app-class-block>
-
+    <div class="tabs is-centered">
+        <ul>
+            <li [ngClass]="{'is-active': viewClass}" (click)="toggleClass()"><a>Class</a></li>
+            <li [ngClass]="{'is-active': viewCharacter}" (click)="toggleCharacter()"><a>Character</a></li>
+        </ul>
+    </div>
+    <app-class-block *ngIf="viewClass" [klass]="npc.npcClass"></app-class-block>
 </section>
