@@ -4,4 +4,4 @@ from rest_framework import serializers
 class FeatureSerializer(serializers.ModelSerializer):
     class Meta:
         model = Feature
-        fields = ['__all__']
+        fields = '__all__'

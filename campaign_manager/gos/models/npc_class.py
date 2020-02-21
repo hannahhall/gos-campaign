@@ -5,7 +5,7 @@ from gos.models.feature import Feature
 class NPCClass(models.Model):
     name = models.CharField(max_length=100)
     short_description = models.CharField(max_length=255)
-    description = models.TextField()
+    description = models.TextField(blank=True, null=True)
     armor_class = models.IntegerField()
     max_hit_points = models.IntegerField()
     speed = models.CharField(max_length=30)
