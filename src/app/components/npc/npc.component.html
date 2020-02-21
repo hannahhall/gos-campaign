@@ -6,5 +6,5 @@
             <li [ngClass]="{'is-active': viewCharacter}" (click)="toggleCharacter()"><a>Character</a></li>
         </ul>
     </div>
-    <app-class-block *ngIf="viewClass" [klass]="npc.npcClass"></app-class-block>
+    <app-class-block *ngIf="viewClass" [klass]="npc.npcClass" [spellSlots]="npc.spellSlots"></app-class-block>
 </section>

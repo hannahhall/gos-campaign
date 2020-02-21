@@ -49,18 +49,34 @@
             <b class="block-ability-title">Languages</b> {{klass.languages}}
         </p>
     </div>
-    <div class="block-actions" *ngIf="klass.actions">
-        <h3 class="title is-5">Actions</h3>
-        <div class="block-action" *ngFor="let action of klass.actions">
-            <b class="block-action-name">{{action.name}} </b><i class="block-action-type">{{action.attack_type}}</i>: 
-            <span class="block-action-description">{{action.description}}</span>
-        </div>
-    </div>
-    <div class="block-reactions" *ngIf="klass.reactions">
-        <h3 class="title is-5">Reactions</h3>
-        <p class="block-reaction" *ngFor="let reaction of klass.reactions">
-            <b class="block-reaction-name">{{reaction.name}}</b> {{reaction.description}}
+    <div class="block-features content" *ngIf="klass.features && klass.features.length">
+        <p class="block-feature" *ngFor="let feature of klass.features">
+            <b class="block-reaction-name">{{feature.name}}</b> {{feature.description}}
         </p>
+    </div>
+    <div class="block-actions-grid">
+        <div class="block-spells" *ngIf="spellSlots && spellSlots.length">
+            <h3 class="title is-5">Spell Slots</h3>
+            <div *ngFor="let spellSlot of spellSlots">
+                <b>{{spellSlot.level}} level<span *ngIf="spellSlot.max"> ({{spellSlot.max}} slots)</span>:</b>
+                <ul>
+                    <li *ngFor="let spell of spellSlot.spells">{{spell.name}}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="block-actions content" *ngIf="klass.actions">
+            <h3 class="title is-5">Actions</h3>
+            <p class="block-action" *ngFor="let action of klass.actions">
+                <b class="block-action-name">{{action.name}} </b><i class="block-action-type">{{action.attack_type}}</i>: 
+                <span class="block-action-description">{{action.description}}</span>
+            </p>
+        </div>
+        <div class="block-reactions content" *ngIf="klass.reactions && klass.reactions.length">
+            <h3 class="title is-5">Reactions</h3>
+            <p class="block-reaction" *ngFor="let reaction of klass.reactions">
+                <b class="block-reaction-name">{{reaction.name}}</b> {{reaction.description}}
+            </p>
+        </div>
     </div>
     <div class="block-description" *ngIf="klass.description">
         <p>{{klass.description}}</p>
