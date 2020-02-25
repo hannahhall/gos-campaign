@@ -1,0 +1,35 @@
+@import '../../../../node_modules/bulma/sass/utilities/all';
+@import '../../../sass/colors';
+@import '../../../sass/vars';
+
+.fight {
+    padding: 70px 20px 10px;
+    // display: grid;
+    // justify-content: start;
+    // gap: 10px;
+    width: 100vw;
+
+    @include desktop {
+        width: calc(100vw - #{$menu-width});
+    }
+
+    &-card {
+        
+        &__add {
+            width: 300px;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid $green;
+        }
+    }
+
+    .icon.is-large {
+        font-size: 128px;
+        height: 128px;
+        width: 128px;
+        color: rgba($red, .5);
+        cursor: pointer;
+    }
+}

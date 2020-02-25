@@ -43,6 +43,15 @@ export class NpcService {
     );
   }
 
+  getNpc(id: number) {
+    return this.http.get(`api/npcs/${id}`).subscribe(
+      (res: any) => {
+        let npc = new Npc(res);
+        return npc;
+      }
+    )
+  }
+
   setNpc(id: number) {
     return this.http.get(`api/npcs/${id}`).subscribe(
       (res: any) => {

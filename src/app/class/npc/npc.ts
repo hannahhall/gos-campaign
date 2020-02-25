@@ -17,6 +17,7 @@ export class Npc {
     currentHp: number;
     reactions: any;
     spellSlots: SpellSlot[];
+    initiative: number;
 
     constructor(props: any) {
         if (!props) return;

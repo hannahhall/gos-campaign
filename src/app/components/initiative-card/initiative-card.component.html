@@ -1,0 +1,18 @@
+<div class="card init-card">
+    <header class="card-header">
+        <h3 class="card-header-title">
+            {{character.name}}
+        </h3>
+        <span class="card-header-icon">Dex: {{character.npcClass.dex}}</span>
+    </header>
+    <div class="card-content">
+      <div class="content">
+        <div class="field">
+            <label class="label">Roll:</label>
+            <div class="control">
+              <input class="input" type="text" [(ngModel)]="character.initiative">
+            </div>
+          </div>
+      </div>
+    </div>
+</div>

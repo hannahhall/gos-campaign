@@ -4,6 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { SpellComponent } from './components/spell/spell.component';
 import { NpcComponent } from './components/npc/npc.component';
+import { FightComponent } from './components/fight/fight.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'npc/:id',
     component: NpcComponent
+  },
+  {
+    path: 'initiative',
+    component: FightComponent
   },
   {
     path: '',

@@ -14,6 +14,10 @@ import { BlogComponent } from './components/blog/blog.component';
 import { SpellComponent } from './components/spell/spell.component';
 import { NpcComponent } from './components/npc/npc.component';
 import { ClassBlockComponent } from './components/class-block/class-block.component';
+import { FightComponent } from './components/fight/fight.component';
+import { InitiativeCardComponent } from './components/initiative-card/initiative-card.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { FightCardComponent } from './components/fight-card/fight-card.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +29,10 @@ import { ClassBlockComponent } from './components/class-block/class-block.compon
     SpellComponent,
     NpcComponent,
     ClassBlockComponent,
+    FightComponent,
+    InitiativeCardComponent,
+    ModalComponent,
+    FightCardComponent,
   ],
   imports: [
     BrowserModule,

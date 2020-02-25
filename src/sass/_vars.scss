@@ -14,3 +14,10 @@ $tabs-border-bottom-color: $green;
 $tabs-link-color: $green;
 $tabs-link-active-color: $secondary;
 $tabs-link-active-border-bottom-color: $secondary;
+
+// Modal overrides
+$modal-z: 9999;
+
+// Cards
+$card-background-color: rgba($tan, .2);;
+$card-header-shadow: none;

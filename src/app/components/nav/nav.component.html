@@ -19,19 +19,17 @@
     <ng-container *ngIf="user.isSuperuser">
         <p class="menu-label">
             Dungeon Master
-        </p>
-        <!-- Spells -->
+        </p>        
         <ul class="menu-list">
+            <a class="menu-item" routerLink="/initiative" routerLinkActive="is-active">Initiative</a>
+            <!-- Spells -->
             <li class="menu-container">
                 <a (click)="toggleSection('spells')" class="menu-item">Spells</a>
                 <ul *ngIf="isShown('spells')" class="menu-inner">
                     <li *ngFor="let spell of spells"><a class="menu-item" (click)="goToSpell(spell.id)">{{ spell.name }}</a></li>
                 </ul>
             </li>
-        </ul>
-
-        <!-- Npcs -->
-        <ul class="menu-list">
+            <!-- Npcs -->
             <li class="menu-container">
                 <a (click)="toggleSection('npcs')" class="menu-item">Npcs</a>
                 <ul *ngIf="isShown('npcs')" class="menu-inner">
@@ -39,5 +37,7 @@
                 </ul>
             </li>
         </ul>
+
+        
     </ng-container>
 </aside>

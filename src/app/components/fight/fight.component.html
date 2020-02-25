@@ -1,0 +1,73 @@
+<app-hero>
+    <div class="field is-grouped is-grouped-right">
+        <p class="control">
+          <button class="button is-success is-inverted">
+            Create Order
+          </button>
+        </p>
+        <p class="control">
+          <button class="button is-danger" (click)="startFight()">
+            Start Fight
+          </button>
+        </p>
+      </div>
+</app-hero>
+<div class="fight container">
+    <div class="columns is-multiline">
+        <ng-container *ngIf="!fightCards.length">
+            <div class="fight-card column is-one-third-widescreen is-half-desktop" *ngFor="let card of initiativeCards">
+                <app-initiative-card [character]="card"></app-initiative-card>
+            </div>
+            <div class="fight-card column is-one-third-widescreen is-half-desktop">
+                <div class="card fight-card__add">
+                    <div class="card-content">
+                        <div class="content">
+                            <span class="icon is-large">
+                                <i class="fas fa-plus-circle" (click)="isModalVisible = true"></i>
+                            </span>
+                        </div>
+                    </div>    
+                </div>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="fightCards.length">
+            <div class="fight-card column is-one-third-widescreen is-half-desktop" *ngFor="let card of fightCards">
+                <app-fight-card [character]="card"></app-fight-card>
+            </div>
+        </ng-container>
+    </div>
+</div>
+<app-modal [title]="'Choose a character'" [successText]="'Add Character'" [cancelText]="'Cancel'"
+    [(isVisible)]="isModalVisible">
+    <div class="container">
+        <div class="field">
+            <label class="label">PC</label>
+            <div class="control">
+                <input class="input" type="text">
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">NPC</label>
+            <div class="control">
+                <div class="select">
+                    <select [(ngModel)]="chosenCharacter">
+                        <option>Select NPC</option>
+                        <option *ngFor="let npc of npcs" value="{{npc.id}}">{{npc.name}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="field is-grouped is-grouped-right">
+            <p class="control">
+                <button class="button is-primary" (click)="chooseCharacter()">
+                    Submit
+                </button>
+            </p>
+            <p class="control">
+                <button class="button is-light" (click)="isModalVisible = false">
+                    Cancel
+                </button>
+            </p>
+        </div>
+    </div>
+</app-modal>
