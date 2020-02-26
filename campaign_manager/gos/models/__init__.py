@@ -2,6 +2,9 @@ from gos.models.ability_score import AbilityScore
 from gos.models.action import Action
 from gos.models.blog import Blog
 from gos.models.feature import Feature
+from gos.models.fight import Fight
+from gos.models.fight_member import FightMember
+from gos.models.monster import Monster
 from gos.models.npc import NPC
 from gos.models.npc_class import NPCClass
 from gos.models.spell import Spell

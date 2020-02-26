@@ -1,7 +1,7 @@
 from django.db import models
 
+from gos.models.monster import Monster
 from gos.models.spell import Spell
-from gos.models.npc import NPC
 
 class SpellSlot(models.Model):
     created = models.DateTimeField(auto_now_add=True)
@@ -9,7 +9,7 @@ class SpellSlot(models.Model):
     max = models.IntegerField(blank=True, null=True)
     used = models.IntegerField(blank=True, null=True)
     spells = models.ManyToManyField(Spell)
-    npc = models.ForeignKey(NPC, related_name='spell_slots', on_delete=models.CASCADE, null=True)
+    monster = models.ForeignKey(Monster, related_name='spell_slots', on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return f'{self.level} level spell slot for {self.npc.name}'

@@ -1,6 +1,7 @@
 from django.db import models
 from enum import Enum
 from gos.models.npc_class import NPCClass
+from gos.models.monster import Monster
 
 class AlignmentType(Enum):  
     LG = "Lawful Good"
@@ -13,8 +14,7 @@ class AlignmentType(Enum):
     NE = "Neutral Evil"
     CE = "Chaotic Evil"
 
-class NPC(models.Model):
-    name = models.CharField(max_length=100)
+class NPC(Monster):
     bio = models.TextField()
     race = models.CharField(max_length=20)
     alignment = models.CharField(
@@ -27,8 +27,6 @@ class NPC(models.Model):
     flaws = models.TextField(blank=True, null=True)
     notes = models.TextField(blank=True, null=True)
     secrets = models.TextField(blank=True, null=True)
-    npc_class = models.ForeignKey(NPCClass, on_delete=models.PROTECT)
-    current_hp = models.IntegerField()
 
     def __str__(self):
         return f'{self.name}: {self.race} {self.npc_class.name}'

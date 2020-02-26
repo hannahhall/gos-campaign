@@ -1,4 +1,4 @@
-from gos.models.spell_slot import NPC
+from gos.models.npc import NPC
 from gos.serializers.npc_class import NPCClassSerializer
 from gos.serializers.spell_slot import SpellSlotSerializer
 from rest_framework import serializers
