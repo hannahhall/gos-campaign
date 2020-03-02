@@ -19,7 +19,6 @@ export class NpcComponent implements OnInit {
   ngOnInit() {
     this.npcService.npc.subscribe((npc: Npc) => {
       this.npc = npc;
-      console.log(npc)
     });
   }
 
