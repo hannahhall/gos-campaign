@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
 @Injectable()
 export class UserService {
   private httpOptions: any;
-  private _token: string;
   public token_expires: Date;
   public username: string;
   public errors: any = [];

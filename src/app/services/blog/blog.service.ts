@@ -41,7 +41,6 @@ export class BlogService {
         );
         if (this.router.url.includes('blogs')) {
           const id = this.router.url.split('/').pop()
-          console.log(id)
           this.setBlog(parseInt(id));
         }
         this._blogs.next(blogs);

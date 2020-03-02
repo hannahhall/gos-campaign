@@ -17,7 +17,6 @@ export class BlogComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    console.log(this.router.url)
     this.blogService.blog.subscribe(res => {
       this.blog = res
     })
