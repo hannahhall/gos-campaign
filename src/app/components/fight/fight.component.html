@@ -6,7 +6,7 @@
           </button>
         </p>
         <p class="control">
-          <button class="button is-danger" (click)="startFight()">
+          <button class="button is-danger" (click)="createFight()">
             Start Fight
           </button>
         </p>
@@ -52,7 +52,7 @@
                 <div class="select">
                     <select [(ngModel)]="chosenCharacter">
                         <option>Select NPC</option>
-                        <option *ngFor="let npc of npcs" value="{{npc.id}}">{{npc.name}}</option>
+                        <option *ngFor="let monster of monsters" value="{{monster.id}}">{{monster.name}}</option>
                     </select>
                 </div>
             </div>

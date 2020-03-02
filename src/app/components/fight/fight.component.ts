@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Npc } from 'src/app/class/npc/npc';
-import { NpcService } from 'src/app/services/npc/npc.service';
+import { Monster } from 'src/app/class/monster/monster';
+import { MonsterService } from 'src/app/services/monster/monster.service';
+import { FightService } from 'src/app/services/fight/fight.service';
+import { Fight } from 'src/app/class/fight/fight';
 
 @Component({
   selector: 'app-fight',
@@ -11,30 +13,37 @@ export class FightComponent implements OnInit {
   initiativeCards = [];
   fightCards = [];
   isModalVisible: Boolean = false;
-  npcs: Npc[];
+  monsters: Monster[];
   chosenCharacter: number;
+  fight = new Fight({name: 'First Encounter', challengeRating: 0});
 
-  constructor(private npcService: NpcService) { }
+  constructor(private monsterService: MonsterService, private fightService: FightService) { }
 
   ngOnInit() {
-    this.npcService.npcs.subscribe(npcs => {
-      this.npcs = npcs;
+    this.monsterService.monsters.subscribe(monsters => {
+      this.monsters = monsters;
     });
 
-    this.npcService.npc.subscribe(npc => {
-      if (npc.id) {
-        this.initiativeCards.push(npc);
+    this.monsterService.monster.subscribe(monster => {
+      if (monster.id) {
+        this.fight.challengeRating += monster.npcClass.challenge;
+        this.initiativeCards.push(monster);
       }
     });
   }
 
   chooseCharacter() {
-    this.npcService.setNpc(this.chosenCharacter);
+    this.monsterService.setMonster(this.chosenCharacter);
     this.isModalVisible = false;
   }
 
   startFight() {
-    this.fightCards = this.initiativeCards.sort((a: Npc, b: Npc) => b.initiative - a.initiative);
+    this.fight.members = this.initiativeCards.sort((a: Monster, b: Monster) => b.initiative - a.initiative);
   }
 
+  createFight() {
+    this.startFight();
+    console.log(this.fightService)
+    this.fightService.createFight(this.fight);
+  }
 }
