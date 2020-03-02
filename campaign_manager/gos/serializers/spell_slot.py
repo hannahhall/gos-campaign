@@ -1,8 +1,9 @@
-from gos.models.spell import Spell
-from gos.serializers.spell import SpellDetailSerializer
 from rest_framework import serializers
 
+from gos.models.spell import Spell
 from gos.models.spell_slot import SpellSlot
+from gos.serializers.spell import SpellDetailSerializer
+
 
 class SpellSlotSerializer(serializers.ModelSerializer):
     spells = SpellDetailSerializer(many=True)
