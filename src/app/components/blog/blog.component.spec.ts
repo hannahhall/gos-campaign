@@ -1,6 +1,11 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MockComponent } from 'ng-mocks';
 
 import { BlogComponent } from './blog.component';
+import { HeroComponent } from '../hero/hero.component';
+import { BlogService } from 'src/app/services/blog/blog.service';
 
 describe('BlogComponent', () => {
   let component: BlogComponent;
@@ -8,7 +13,12 @@ describe('BlogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BlogComponent ]
+      imports: [ RouterTestingModule, HttpClientTestingModule ],
+      providers: [ BlogService ],
+      declarations: [
+        BlogComponent,
+        MockComponent(HeroComponent),
+      ]
     })
     .compileComponents();
   }));

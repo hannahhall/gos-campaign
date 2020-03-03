@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { User } from '../../class/user/user';
 import { BehaviorSubject } from 'rxjs';
-import { Router } from '@angular/router';
  
 @Injectable()
 export class UserService {

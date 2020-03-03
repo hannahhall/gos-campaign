@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Monster } from 'src/app/class/monster/monster';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +10,7 @@ export class MonsterService {
   private _monsters: BehaviorSubject<Monster[]> = new BehaviorSubject([]);
   private _monster: BehaviorSubject<Monster> = new BehaviorSubject(new Monster({}))
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient) {
     this.loadInitialData();
   }
 

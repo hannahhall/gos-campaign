@@ -8,8 +8,8 @@ export class Blog {
     constructor(props: any) {
         this.id = props.id;
         this.title = props.title;
-        this.image = props.image || undefined;
-        this.description = props.description || undefined;
-        this.type = props.type || undefined;
+        this.image = props.image;
+        this.description = props.description;
+        this.type = props.type;
     }
 }

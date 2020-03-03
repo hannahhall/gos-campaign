@@ -11,7 +11,9 @@ export class SpellSlot {
     constructor(props:any) {
         this.id = props.id;
         this.created = props.created;
-        this.spells = props.spells.map((spell: any) => new Spell(spell));
+        if (props.spells) {
+            this.spells = props.spells.map((spell: any) => new Spell(spell));
+        }
         this.level = props.level;
         this.max = props.max;
         this.used = props.used;
